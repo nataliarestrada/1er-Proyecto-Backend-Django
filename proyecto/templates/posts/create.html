@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/posts/create" method="post">
+        {% csrf_token %}
+        <input placeholder="Title" type="text" name="title">
+        <input placeholder="Description" type="text" name="description">
+        <input placeholder="Image" type="text" name="image">
+        <textarea placeholder="Content" name="content"></textarea>
+        <button>Crear</button>
+    </form>
+</body>
+</html>
