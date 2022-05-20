@@ -11,6 +11,7 @@
         <div class="card mb-3" style="width: 34rem;">
             <img src="{{ post.img }}" class="card-img-top" alt="...">
             <div class="card-body">
+            <p class="card-text"><small class="text-muted">{{ post.category }}</small></p>
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.content }}</p>
             <p class="card-text"><small class="text-muted">{{ post.author.first_name }} {{ post.author.last_name }}</small></p>
@@ -18,10 +19,50 @@
             
             {% if user.is_authenticated %}
 
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-info"  href="/posts/edit/{{ post.id }}" role="button">Editar</a>
-                <button class="delete-confirmation btn btn-danger" onclick="deleteConfirmation({{post.id}})"> Eliminar</button>
-            </div>
+                {% if user == post.author %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-info"  href="/posts/edit/{{ post.id }}" role="button">Editar</a>
+                        <button class="delete-confirmation btn btn-danger" onclick="deleteConfirmation({{post.id}})"> Eliminar</button>
+                    </div>
+                {% endif %}
+
+                <form action="/posts/comment/{{ post.id }}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Add Comment</label>
+                        <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div class="d-flex mb-3 justify-content-end">
+                            <button class="btn btn-success btn-comment mt-3" type="submit">Comment</button>
+                        </div>
+                      </div>
+                </form>
+
+                <div class="container card">
+                   
+                    <h3 class="card-title"><small class="text-muted"> {{ cant_comments }} Comments</small></h3>
+                        
+                    <ul class="list-group list-group-flush card-list">
+                        {% for comment in comments %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="author">{{ comment.user.first_name }} {{ comment.user.last_name }} <small class="text-muted"> - {{ comment.created_date }}</small></p>
+                                <p class="card-text"><small class="text-muted">{{ comment.content }}</small></p>
+                            </div>
+                            
+                            <div class="">
+                                <!-- <p class="author">{{ comment.user.first_name }} {{ comment.user.last_name }} </p> -->
+                                <!-- <p class="card-text card-date"><small class="text-muted"> - {{ comment.created_date }}</small></p> -->
+                                {% if user == comment.user %}
+                                    <a class="btn btn-danger" href="/posts/delete-comment/{{ comment.id }}"> <i class="fa fa-trash"></i></a>
+                                {% endif %}
+                            </div>
+                            <!-- <p class="card-text"><small class="text-muted">{{ comment.content }}</small></p> -->
+                            
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
             
             {% endif %}
         </div>

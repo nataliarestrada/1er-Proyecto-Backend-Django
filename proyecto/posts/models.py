@@ -17,3 +17,9 @@ class Post(models.Model):
 
     def get_url(self):
         return reverse('posts:post_detail', args=[self.pk])
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.SET_NULL,null=True)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL,null=True)
