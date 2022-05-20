@@ -12,7 +12,7 @@ def home(request):
 def posts(request):
     posts = Post.objects.all().order_by("-created_date", "-id")   # SELECT * FROM posts
 
-    #posts = Post.objects.filter(title__icontains="Publicación") # SELECT * FROM posts WHERE title LIKE "Publicación"
+    
     print(posts)
     # return HttpResponse("Publicaciones")
 
@@ -20,6 +20,15 @@ def posts(request):
         'posts': posts
     })
 
+def search(request):
+
+    if request.method == "POST":
+        posts = Post.objects.filter(title__icontains=request.POST["busqueda"]).order_by("-created_date", "-id") # SELECT * FROM posts WHERE title LIKE "Publicación"
+
+    return render(request, 'posts/posts.html', {
+        'posts': posts
+    })
+ 
 
 def post(request, id):
     post = Post.objects.get(id=id)
@@ -31,6 +40,7 @@ def create_post(request):
     if request.method == "POST":
         post = Post(
             title=request.POST['title'],
+            category=request.POST['category'],
             description=request.POST['description'],
             img=request.POST['image'],
             content=request.POST['content'],

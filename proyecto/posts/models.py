@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=50,verbose_name="Title")
+    category = models.CharField(max_length=50,null=True)
     description = models.CharField(max_length=100)
     img = models.CharField(max_length=240)
     content = models.TextField()

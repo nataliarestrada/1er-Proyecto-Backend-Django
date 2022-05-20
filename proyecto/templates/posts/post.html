@@ -1,4 +1,37 @@
-<!doctype html>
+{% extends "home.html" %}
+{% load static %}
+
+{% block title %} 
+    Post
+{% endblock %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-center mt-3" >
+        <div class="card mb-3" style="width: 34rem;">
+            <img src="{{ post.img }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
+            <p class="card-text"><small class="text-muted">{{ post.author.first_name }} {{ post.author.last_name }}</small></p>
+            
+            
+            {% if user.is_authenticated %}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-info"  href="/posts/edit/{{ post.id }}" role="button">Editar</a>
+                <button class="delete-confirmation btn btn-danger" onclick="deleteConfirmation({{post.id}})"> Eliminar</button>
+            </div>
+            
+            {% endif %}
+        </div>
+    </div>
+
+   
+    <script src="{% static "js/posts.js" %}"></script>
+{% endblock %}
+
+<!-- <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,4 +52,4 @@
     <img src="{{ post.img }}">
     <p>{{ post.content }}</p>
 </body>
-</html>
+</html> -->

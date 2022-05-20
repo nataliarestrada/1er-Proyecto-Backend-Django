@@ -1,4 +1,52 @@
-<!doctype html>
+{% extends "home.html" %}
+
+{% block title %} 
+    sing up
+{% endblock %}
+
+{% block content %}
+    
+    <div class="d-flex flex-column align-items-center m-3" >
+        <h3 class="m-3">Sing Up</h3>
+        <form method="post" action="/auth/signup/" style="width: 400px;">
+            {% csrf_token %}
+            <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label">First name</label>
+                <input type="text" class="form-control" name="first_name"required>
+            </div>
+            <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label">Last name</label>
+                <input type="text" class="form-control" name="last_name" required>
+            </div>
+            <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" required>
+            </div>
+            <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" required>
+                </div>
+            <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label">Confirm password</label>
+                <input type="password" class="form-control" name="password_confirmation" required>
+            </div>
+            
+            <button class="btn btn-primary">Registrarme</button>
+        </form>
+        {% if error %}
+            <p>{{ message }}</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
+
+<!-- <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,4 +70,4 @@
         <p>{{ message }}</p>
     {% endif %}
 </body>
-</html>
+</html> -->

@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Hola</h1>
-    <a href="/posts">Ir a publicaciones</a>
-    {% if user.is_authenticated %}
-        <p>{{ user.first_name }} {{ user.last_name }}</p>
-        <p>{{ user.username }}</p>
-        <a href="/auth/logout">Cerrar sesión</a>
-    {% else %}
-        <a href="/auth/login">Iniciar sesión</a>
-        <a href="/auth/signup">Registro</a>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 
+Blog App
+{% endblock %}
+
+{% block content %}
+<h1>Bienvenido</h1>
+
+{% endblock %}
