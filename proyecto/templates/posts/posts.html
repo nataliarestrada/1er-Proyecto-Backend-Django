@@ -2,17 +2,17 @@
 {% extends "home.html" %}
 
 {% block title %} 
-    Posts
+    Publicaciones
 {% endblock %}
 
 {% block content %} 
 
-    <h1 class="m-3">Posts</h1>
+    <h1 class="m-3">Publicaciones</h1>
     <nav class="navbar navbar-light bg-light w-100">
         
     </nav>
 
-    <div class="d-flex gap-2 d-md-flex justify-content-md-end mb-3">
+    <div class="d-flex gap-2 d-md-flex justify-content-md-end m-3 ">
         <div class="container-fluid">
             <form class="d-flex" action="/posts/search" method="post">
               {% csrf_token %}
@@ -20,11 +20,13 @@
                 <option value="1">Titulo</option>
                 <option value="2">Categoria</option>
               </select>
-              <input class="form-control me-2" type="search" placeholder="Search" name="busqueda" aria-label="Search">
+              <input class="form-control me-2" type="search" placeholder="Buscar" name="busqueda" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
         </div>
-        <a class="btn btn-warning" href="/posts/create" role="button">Crear</a>
+        {% if user.is_authenticated %}
+          <a class="btn btn-warning" href="/posts/create" role="button">Crear</a>
+        {% endif %}
     </div>
     
     <section class="posts">

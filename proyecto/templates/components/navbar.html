@@ -1,7 +1,7 @@
 
 {% block nav %}
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F8D5C9; width: 100%;">
     <!-- Container wrapper -->
     <div class="container-fluid">
   
@@ -10,8 +10,8 @@
             <!-- Navbar brand -->
             <a class="navbar-brand mt-2 mt-lg-0" href="/">
             <img
-                src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                height="20"
+                src="https://radicalcosmetics.com/wp-content/uploads/2022/02/Beauty-Text-05.png"
+                height="30"
                 alt="MDB Logo"
                 loading="lazy"
             />
@@ -21,7 +21,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/posts">Publicaciones</a>
+                    <a class="nav-link" href="/posts" >Publicaciones</a>
                 </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/posts/my-posts">Mis Publicaciones</a>
@@ -34,11 +34,12 @@
                     <!-- Right links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                        <a class="nav-link" href="/auth/logout"> Log Out</a>
+                            <a class="nav-link " href="#" >{{ user.first_name }} {{ user.last_name }}</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">{{ user.first_name }} {{ user.last_name }}</a>
+                        <a class="nav-link btn btn-outline-light btn-sm" href="/auth/logout"> Log Out</a>
                         </li>
+                        
                     </ul>
                     <!-- Right links -->
                 <!-- Right elements -->
@@ -53,14 +54,14 @@
                 <!-- Left links -->
     
                 <!-- Right elements -->
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center ">
                     <!-- Right links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                        <a class="nav-link" href="/auth/login">Log In</a>
+                        <li class="nav-item me-2">
+                        <a class="nav-link btn btn-outline-light btn-sm" href="/auth/login">Log In</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="/auth/signup">Signup</a>
+                        <a class="nav-link btn btn-outline-light btn-sm" href="/auth/signup">Signup</a>
                         </li>
                     </ul>
                     <!-- Right links -->

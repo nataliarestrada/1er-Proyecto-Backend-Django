@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block title %} 
-    Post
+    Publicacion
 {% endblock %}
 
 {% block content %}
 
     <div class="d-flex justify-content-center mt-3" >
-        <div class="card mb-3" style="width: 34rem;">
+        <div class="card mb-3" style="width: 36rem;">
             <img src="{{ post.img }}" class="card-img-top" alt="...">
             <div class="card-body">
             <p class="card-text"><small class="text-muted">{{ post.category }}</small></p>
@@ -29,17 +29,17 @@
                 <form action="/posts/comment/{{ post.id }}" method="post">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Add Comment</label>
+                        <label for="exampleFormControlTextarea1" class="form-label">Agregar Comentario</label>
                         <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         <div class="d-flex mb-3 justify-content-end">
-                            <button class="btn btn-success btn-comment mt-3" type="submit">Comment</button>
+                            <button class="btn btn-success btn-comment mt-3" type="submit">Comentar</button>
                         </div>
                       </div>
                 </form>
 
                 <div class="container card">
                    
-                    <h3 class="card-title"><small class="text-muted"> {{ cant_comments }} Comments</small></h3>
+                    <h3 class="card-title"><small class="text-muted">Comentarios ( {{ cant_comments }} )</small></h3>
                         
                     <ul class="list-group list-group-flush card-list">
                         {% for comment in comments %}

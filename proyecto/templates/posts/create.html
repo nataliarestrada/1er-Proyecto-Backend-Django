@@ -1,13 +1,13 @@
 {% extends "home.html" %}
 
 {% block title %} 
-    Create Posts
+    Crear Publicacion
 {% endblock %}
 
 {% block content %} 
 
 <div class="d-flex flex-column align-items-center m-3 gap-2">
-    <h3 class="m-3">Create Posts</h3>
+    <h3 class="m-3">Crear Publicacion</h3>
     <form action="/posts/create" method="post" style="width: 600px;">
         {% csrf_token %}
         <!-- 2 column grid layout with text inputs for the first and last names -->
